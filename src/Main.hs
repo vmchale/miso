@@ -3,9 +3,12 @@
 
 module Main ( main ) where
 
+import Miso
+
 data Action = NoOp
 
 data St = St
+    deriving (Eq)
 
 main :: IO ()
 main = startApp App {..}
