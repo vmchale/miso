@@ -6,6 +6,7 @@ directories = [ "src", "web-src" ]
 templates = [ "src/Main.hs"
             , "web-src/index.html"
             , "{{ project }}.cabal"
+            , "cabal.project.local"
             , ".gitignore"
             ]
 scripts = [ "shake.hs" ]
