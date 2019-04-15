@@ -1,0 +1,15 @@
+license = "BSD3"
+with_readme = true
+
+[files]
+directories = [ "src", "web-src" ]
+templates = [ "src/Main.hs"
+            , "web-src/index.html"
+            , "{{ project }}.cabal"
+            , ".gitignore"
+            ]
+scripts = [ "shake.hs" ]
+
+[config]
+version = "0.1.0.0"
+version_control = "git"
