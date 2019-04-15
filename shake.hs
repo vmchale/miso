@@ -15,11 +15,11 @@ main :: IO ()
 main = shakeArgs shakeOptions { shakeFiles = ".shake", shakeLint = Just LintBasic, shakeChange = ChangeModtimeAndDigestInput } $ do
     want [ "target/index.html" ]
 
-    [ "dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/{{ project }}-0.1.0.0/x/{{ project }}/build/{{ project }}/{{ project }}.jsexe/all.js", "dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/{{ project }}-0.1.0.0/x/{{ project }}/build/{{ project }}/{{ project }}.jsexe/all.js.externs" ] &%> \_ -> do
+    [ "dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/{{ project }}-{{ version }}/x/{{ project }}/build/{{ project }}/{{ project }}.jsexe/all.js", "dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/{{ project }}-{{ version }}/x/{{ project }}/build/{{ project }}/{{ project }}.jsexe/all.js.externs" ] &%> \_ -> do
         need . snd =<< getCabalDepsA "{{ project }}.cabal"
         command [RemEnv "GHC_PACKAGE_PATH"] "cabal" ["new-build", "--ghcjs"]
 
-    googleClosureCompiler ["dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/{{ project }}-0.1.0.0/x/{{ project }}/build/{{ project }}/{{ project }}.jsexe/all.js", "dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/{{ project }}-0.1.0.0/x/{{ project }}/build/{{ project }}/{{ project }}.jsexe/all.js.externs" ] "target/all.min.js"
+    googleClosureCompiler ["dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/{{ project }}-{{ version }}/x/{{ project }}/build/{{ project }}/{{ project }}.jsexe/all.js", "dist-newstyle/build/x86_64-linux/ghcjs-8.6.0.1/{{ project }}-{{ version }}/x/{{ project }}/build/{{ project }}/{{ project }}.jsexe/all.js.externs" ] "target/all.min.js"
 
     "target/index.html" %> \out -> do
         liftIO $ createDirectoryIfMissing True (takeDirectory out)
