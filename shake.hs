@@ -2,10 +2,10 @@
 {- cabal:
 build-depends: base, shake, shake-cabal, shake-google-closure-compiler, directory
 default-language: Haskell2010
-ghc-options: -Wall
+ghc-options: -Wall -threaded -rtsopts "-with-rtsopts=-I0 -qg -qb"
 -}
 
-import           Development.Shake     
+import           Development.Shake
 import           Development.Shake.Cabal
 import           Development.Shake.ClosureCompiler
 import           Development.Shake.FilePath
